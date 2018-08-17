@@ -43,6 +43,7 @@ func (r *ReadFromFile) Read(rc chan []byte){
 	for{
 		line, err := rd.ReadBytes('\n')
 		if err == io.EOF{
+			fmt.Println("EOF")
 			time.Sleep(500 * time.Millisecond)
 			continue
 		} 
@@ -51,7 +52,7 @@ func (r *ReadFromFile) Read(rc chan []byte){
 			panic(fmt.Sprintf("read error:%s", err.Error()))
 		}
 
-		rc <- line
+		rc <- line[:len(line)-1]
 	}
 }
 
@@ -63,8 +64,6 @@ func (w *WriteToInfluxDB) Write(wc chan string){
 	for v := range wc{
 		fmt.Println(v)
 	}
-
-	fmt.Println(<-wc)
 }
 
 func (l *LogProcess) Parse(){
