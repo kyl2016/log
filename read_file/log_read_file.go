@@ -60,13 +60,17 @@ type WriteToInfluxDB struct{
 }
 
 func (w *WriteToInfluxDB) Write(wc chan string){
+	for v := range wc{
+		fmt.Println(v)
+	}
+
 	fmt.Println(<-wc)
 }
 
 func (l *LogProcess) Parse(){
-	var Line []byte
-	Line = <- l.rc
-	l.wc <- strings.ToUpper(string(Line))
+	for v := range l.rc{
+		l.wc <- strings.ToUpper(string(v))
+	}
 }
 
 func main(){
