@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	// "time"
 	"flag"
 )
 
@@ -38,7 +36,6 @@ func main(){
 	}
 
 	for{
-		
+
 	}
-	fmt.Println("completed")
 }

@@ -7,10 +7,10 @@ import (
 )
 
 type LogProcess struct{
-	path string // 读取文件的路径
-	influxDBDataSource string // influxDB data source
-	rc chan string // 读取数据存放的channel
-	wc chan string // 从解析模块到存储模块传递数据
+	path 				string // 读取文件的路径
+	influxDBDataSource 	string // influxDB data source
+	rc 					chan string // 读取数据存放的channel
+	wc 					chan string // 从解析模块到存储模块传递数据
 }
 
 // 读取模块
@@ -40,11 +40,9 @@ func main(){
 		influxDBDataSource: "username&password...",
 	}
 
-	go lp.ReadFromFile() // 等价于 go (* lp).ReadFromFile()
+	go lp.ReadFromFile() // 等价于: go (* lp).ReadFromFile()
 	go lp.Parse()
 	go lp.WriteToInfluxDB()
 
-	time.Sleep(10000)
-
-	// for{}
+	time.Sleep(10 * time.Second)
 }

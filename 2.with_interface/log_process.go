@@ -64,7 +64,5 @@ func main(){
    go l.Parse()
    go l.w.Write(l.wc)
 
-	time.Sleep(100000)
-
-	// for{}
+	time.Sleep(10 * time.Second)
 }

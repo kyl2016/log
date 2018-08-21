@@ -30,9 +30,6 @@ func (r *ReadFromFile) Read (rc chan []byte){
 			panic(fmt.Sprintf("Read bytes error: %s", err.Error()))
 		}
 
-		fmt.Println(string(line[:len(line)-1]))
-		fmt.Println(string(line[1:len(line)]))
-
 		rc <- line[:len(line)-1]
 	}
 }
