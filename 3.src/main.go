@@ -28,7 +28,7 @@ func main(){
 	go lp.read.Read(lp.rc)
 
 	for i:=0; i<2; i++{
-		go lp.Process()
+		go lp.Parse()
 	}
 
 	for i:=0; i<4; i++{
